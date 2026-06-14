@@ -1,0 +1,26 @@
+# gitignore
+
+frontend/node_modules/*
+*/node_modules/*
+dist/
+build/
+*/.env
+*/.env.local
+*/.DS_Store
+*.log
+coverage/
+.idea/
+.vscode/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+*/package-lock.json
+*/yarn.lock
+*/pnpm-lock.yaml
+
+# Ignore node_modules in any folder
+node_modules/
+**/node_modules/

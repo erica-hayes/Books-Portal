@@ -1,3 +1,12 @@
+<div class="books-container" *ngIf="books?.length; else emptyState">
+  <div *ngFor="let book of books" class="book-item">
+    <app-book-item [book]="book"></app-book-item>
+  </div>
+</div>
 
-
-<!-- Iterate over the array of books using *ngFor, then add the book-item component as a child, and add bootstrap classes if you need to -->
+<ng-template #emptyState>
+  <div class="empty-state">
+    <p>No books are available right now.</p>
+    <p>Tap Add to share your first book.</p>
+  </div>
+</ng-template>

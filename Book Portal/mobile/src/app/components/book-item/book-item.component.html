@@ -2,17 +2,45 @@
 
 <ion-card>
   <ion-card-header>
-    <ion-card-subtitle>{{book.title}}</ion-card-subtitle>
-    <ion-card-title>{{book.author}}</ion-card-title>
+    <ion-card-title>{{book.title}}</ion-card-title>
+    <ion-card-subtitle>by {{book.author}}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>
-      <p>{{book.abstract}}</p>
+    <div class="book-image">
+      <img [src]="book.image" alt="{{book.title}}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
+      <ion-badge [color]="book.status === 'available' ? 'success' : 'danger'" class="status-badge">
+        {{book.status === 'available' ? 'Available' : 'Unavailable'}}
+      </ion-badge>
+    </div>
     
-     
-      <img [src]="book.image">
-     
-     
+    <p><strong>Category:</strong> {{book.category}}</p>
+    <p><strong>Published:</strong> {{book.publish_date}}</p>
+    <p class="abstract">{{book.abstract}}</p>
+    
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:{{book.email}}">{{book.email}}</a></p>
+      <p><strong>Phone:</strong> <a href="tel:{{book.phone}}">{{book.phone}}</a></p>
+      <p><strong>Contact:</strong> {{book.contact}}</p>
+    </div>
+
+    <div *ngIf="book.borrowedBy" class="borrowed-info">
+      <p><strong>Borrowed by:</strong> {{book.borrowedBy}}</p>
+    </div>
+
+    <div class="action-section">
+      <ion-input 
+        #emailInput 
+        type="email" 
+        placeholder="Enter your email"
+        required
+      ></ion-input>
+      <ion-button 
+        expand="block"
+        [color]="book.status === 'available' ? 'primary' : 'warning'"
+        (click)="change_book(emailInput, book.ID)"
+      >
+        {{book.status === 'available' ? 'Borrow This Book' : 'Return This Book'}}
+      </ion-button>
+    </div>
   </ion-card-content>
 </ion-card>
-
-<!-- Complete displaying the book properties -->

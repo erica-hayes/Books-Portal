@@ -6,13 +6,14 @@ import { BookListComponent } from './book-list/book-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [AddBookComponent, BookItemComponent, BookListComponent, HomeComponent],
   imports: [
-    CommonModule, IonicModule, ReactiveFormsModule
+    CommonModule, IonicModule, ReactiveFormsModule, RouterModule
   ],
   exports: [AddBookComponent, BookItemComponent, BookListComponent, HomeComponent]
 })

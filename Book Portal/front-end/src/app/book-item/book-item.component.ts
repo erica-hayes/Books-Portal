@@ -8,15 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./book-item.component.css']
 })
 export class BookItemComponent implements OnInit {
-@Input() book;
-  constructor( private service: BookService, private router: Router) { }
+  @Input() book;
+
+  constructor(private service: BookService) { }
 
   change_book(f, id) {
-    this.service.changeBook(f.value, id ).subscribe((result:{success})=>{ 
-      
-      if (result.success == true){this.router.navigate(['home']);}
-      else { console.log('plz enter a valid email')}
-      });
+    const email = f.value?.trim();
+    if (!email) {
+      console.warn('Please enter a valid email');
+      return;
+    }
+
+    this.service.changeBook(email, id).subscribe((result: { success: boolean, book?: any }) => {
+      if (result.success) {
+        if (result.book) {
+          this.book.status = result.book.status;
+          this.book.borrowedBy = result.book.borrowedBy;
+        }
+      } else {
+        console.warn('Please enter a valid borrower email');
+      }
+    }, error => {
+      console.error('Error updating book status', error);
+    });
   }
 
   ngOnInit() {

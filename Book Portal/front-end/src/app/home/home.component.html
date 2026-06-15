@@ -1,7 +1,31 @@
-<p>
-  home works!
-</p>
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
+<div class="home-container">
+  <header class="header">
+    <h1>Welcome to Books Portal</h1>
+    <p class="subtitle">Share and borrow books with your community</p>
+  </header>
 
+  <div class="features-container">
+    <!-- Browse Books Section -->
+    <div class="feature-card browse-section">
+      <div class="card-icon">📚</div>
+      <h2>Browse Books</h2>
+      <p>Discover a wide collection of books shared by community members. Find your next favorite read.</p>
+      <button class="btn btn-primary action-btn" routerLink="/books">
+        Browse Books
+      </button>
+    </div>
 
-<!-- Add an image or text or links to another components -->
+    <!-- Post Books Section -->
+    <div class="feature-card post-section">
+      <div class="card-icon">✍️</div>
+      <h2>Share a Book</h2>
+      <p>Have a book you'd like to share? Add it to our collection and help others discover great reads.</p>
+      <button class="btn btn-success action-btn" routerLink="/addBook">
+        Post a Book
+      </button>
+    </div>
+  </div>
+</div>

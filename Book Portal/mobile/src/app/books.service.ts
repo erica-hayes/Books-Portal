@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Book } from './book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
-  getBooks() {
+  constructor(private http: HttpClient) { }
+
+  getBooks(): Observable<{ books: Book[] }> {
     const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
     const options = {headers: headers};
+    return this.http.get<{ books: Book[] }>(`http://localhost:3000/books/getBooks`, options);
+  }
   
-/*     Implement the get method and its parameters
- */
+  addBook(form: any): Observable<any> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const options = {headers: headers};
+    return this.http.post<any>(`http://localhost:3000/books/addBook`, form, options);
+  }
 
-  
-   }
-  
-   addBook(form: any) {
-/*     Impement the addBook method and the post http method, don’t forget to add the url of the api end point and its parameters
- */  }
-  constructor( private http: HttpClient) { }
+  changeBook(email: string, id: string | number): Observable<{ success: boolean; book?: Book }> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json', 'Accept': 'application/json'});
+    const options = {headers: headers};
+    return this.http.patch<{ success: boolean; book?: Book }>(`http://localhost:3000/books/changeBook/${id}`, { email }, options);
+  }
 }

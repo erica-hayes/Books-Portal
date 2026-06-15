@@ -1,0 +1,108 @@
+.add-book-card {
+  margin: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+
+  ion-card-header {
+    padding: 20px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+
+    ion-card-title {
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    ion-card-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      margin: 8px 0 0 0;
+    }
+  }
+
+  ion-card-content {
+    padding: 24px 16px;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  ion-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  ion-input,
+  ion-select,
+  ion-textarea {
+    --padding-start: 12px;
+    --padding-end: 12px;
+    --padding-top: 12px;
+    --padding-bottom: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fafafa;
+    
+    &:focus {
+      --background: white;
+      border-color: #667eea;
+    }
+  }
+
+  ion-textarea {
+    font-family: inherit;
+  }
+}
+
+.error-message {
+  min-height: 20px;
+  padding-top: 4px;
+
+  small {
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+.contact-header {
+  padding: 16px 0 8px 0;
+  border: none;
+  background: transparent;
+
+  ion-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    padding: 0;
+  }
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  padding-top: 8px;
+  margin-top: 16px;
+}
+
+.submit-button {
+  --border-radius: 8px;
+  font-weight: 600;
+  height: 48px;
+  
+  &:disabled {
+    opacity: 0.6;
+  }
+}

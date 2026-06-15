@@ -1,8 +1,82 @@
-<p>
-  home works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Books Portal</ion-title>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true">
+  <div class="home-container">
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1>Welcome to Books Portal</h1>
+      <p>Share and discover books in your community</p>
+    </div>
 
+    <!-- Features Section -->
+    <div class="features-section">
+      <!-- Browse Books Feature -->
+      <ion-card class="feature-card">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="library"></ion-icon>
+            Browse Books
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Explore a wide collection of books available for borrowing. Discover new titles and connect with other book enthusiasts in your community.</p>
+          <ion-button 
+            expand="block" 
+            color="primary"
+            [routerLink]="['/tabs/tab2']"
+          >
+            View All Books
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
 
+      <!-- Share Books Feature -->
+      <ion-card class="feature-card">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-icon name="add-circle"></ion-icon>
+            Share a Book
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Have a book you'd like to share? List it on our platform and let others borrow it. Share the joy of reading with your neighbors.</p>
+          <ion-button 
+            expand="block" 
+            color="secondary"
+            [routerLink]="['/tabs/tab3']"
+          >
+            Add Your Book
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
 
-<!-- Add an image or text or links to another components. -->
+    <!-- About Section -->
+    <div class="about-section">
+      <h2>About Books Portal</h2>
+      <p>Books Portal is a community-driven platform for sharing and discovering books. Our mission is to foster a love of reading by making books more accessible and by connecting book lovers in your area.</p>
+      <ul class="features-list">
+        <li>
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <span>Easy book sharing and borrowing</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <span>Connect with local readers</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <span>Discover new books and authors</span>
+        </li>
+        <li>
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <span>Build a community library</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>

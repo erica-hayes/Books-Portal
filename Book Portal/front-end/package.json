@@ -5,7 +5,8 @@
     "ng": "ng",
     "dev": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng serve",
     "start": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng serve",
-    "build": "ng build",
+    "build": "node --openssl-legacy-provider ./node_modules/@angular/cli/bin/ng build",
+    "postinstall": "node ./scripts/patch-http-deceiver.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

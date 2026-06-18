@@ -1,4 +1,4 @@
-<div class="book-card">
+<div class="book-card" [id]="'book-' + book.ID">
   <div class="book-image-container">
     <img class="book-image" [src]="book.image" alt="{{book.title}}" onerror="this.src='https://via.placeholder.com/300x400?text=No+Image'">
     <span class="status-badge" [ngClass]="{'available': book.status === 'available', 'unavailable': book.status !== 'available'}">
@@ -8,11 +8,8 @@
 
   <div class="book-content">
     <h3 class="book-title" [title]="book.title">{{book.title}}</h3>
-    
     <p class="book-author"><strong>Author:</strong> {{book.author}}</p>
-    
     <p class="book-category"><strong>Category:</strong> <span class="category-tag">{{book.category}}</span></p>
-    
     <p class="book-abstract">{{book.abstract}}</p>
     
     <div class="book-meta">
@@ -20,15 +17,9 @@
     </div>
 
     <div class="contact-info">
-      <p class="contact-detail">
-        <strong>📧 Email:</strong> <a href="mailto:{{book.email}}">{{book.email}}</a>
-      </p>
-      <p class="contact-detail">
-        <strong>📞 Phone:</strong> <a href="tel:{{book.phone}}">{{book.phone}}</a>
-      </p>
-      <p class="contact-detail">
-        <strong>👤 Contact:</strong> {{book.contact}}
-      </p>
+      <p class="contact-detail"><strong>📧  Email: </strong> <a href="mailto:{{book.email}}">{{book.email}}</a></p>
+      <p class="contact-detail"><strong>📞  Phone: </strong> <a href="tel:{{book.phone}}">{{book.phone}}</a></p>
+      <p class="contact-detail"><strong>👤  Contact: </strong> {{book.contact}}</p>
     </div>
 
     <div class="borrow-section" *ngIf="book.borrowedBy">
@@ -36,19 +27,10 @@
     </div>
 
     <div class="action-section">
-      <input 
-        type="email" 
-        #emailInput 
-        class="email-input" 
-        placeholder="Enter your email"
-        required
-      >
-      <button 
-        (click)="change_book(emailInput, book.ID)" 
-        class="btn btn-action"
-        [ngClass]="{'btn-borrow': book.status === 'available', 'btn-return': book.status !== 'available'}"
-      >
-        {{book.status === 'available' ? 'Borrow This Book' : 'Return This Book'}}
+      <input type="email" #emailInput class="email-input" placeholder="Enter your email" required> 
+      <button (click)="change_book(emailInput, book.ID)" class="btn btn-action"
+        [ngClass]="{'btn-borrow': book.status === 'available', 'btn-return': book.status !== 'available'}">
+        {{book.status === 'available' ? 'Borrow Book' : 'Return Book'}}
       </button>
     </div>
   </div>

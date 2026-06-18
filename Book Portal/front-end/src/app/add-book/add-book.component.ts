@@ -55,6 +55,11 @@ export class AddBookComponent implements OnInit {
   get abstract() {
     return this.form.get('abstract');
   }
+
+  hasError(controlName: string, errorName: string): boolean {
+    const control = this.form.get(controlName);
+    return !!control && control.touched && !!control.errors && !!control.errors[errorName];
+  }
   
   add_book() {
     let x = <Book>this.form.value;

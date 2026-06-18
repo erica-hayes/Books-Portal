@@ -1,187 +1,114 @@
 
+<div class="home-container">
 
+  <header class="header">
+    <h1>Share a New Book</h1>
+    <p class="subtitle">Fill out the form below to add your book to the portal and share it with the community.</p>
+  </header>
+  
+  <div class="image-container">
+    <img src="https://png.pngtree.com/png-clipart/20240316/original/pngtree-aesthetic-book-illustration-png-image_14603887.png" alt="Book Image" class="image-card">
+  </div>
 
+  <div class="add-form-container">
 
+  <form [formGroup]="form" (ngSubmit)="add_book()" class="add-book-form">
+    
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" placeholder="Enter the Title" formControlName="title" id="title">
+      <div class="alert alert-danger" *ngIf="hasError('title', 'required')">
+        Title is Required
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input type="text" class="form-control" placeholder="Enter the Author" formControlName="author" id="author">
+      <div class="alert alert-danger" *ngIf="hasError('author', 'required')">
+        Author is Required
+      </div>
+    </div>
 
-<ion-content>
-  <ion-card class="add-book-card">
-    <ion-card-header>
-      <ion-card-title>Share Your Book</ion-card-title>
-      <ion-card-subtitle>Help others discover great reads</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="form" (ngSubmit)="add_book()">
-        
-        <!-- Title Field -->
-        <div class="form-group">
-          <ion-label position="floating">Book Title *</ion-label>
-          <ion-input
-            type="text"
-            formControlName="title"
-            placeholder="Enter book title"
-            clearInput
-          ></ion-input>
-          <div class="error-message" *ngIf="title?.invalid && title?.touched">
-            <ion-text color="danger" *ngIf="title?.errors?.['required']">
-              <small>Title is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <div class="form-group">
+    <label for="category">Category:</label>
+    <select class="form-control" formControlName="category" id="category">
+      <option value="" disabled selected>Select a Category</option>
+      <option value="Fiction">Fiction</option>
+      <option value="Non-Fiction">Non-Fiction</option>
+      <option value="Science">Science</option>
+      <option value="History">History</option>
+      <option value="Biography">Biography</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Romance">Romance</option>
+      <option value="Sci-Fi / Fantasy">Sci-Fi / Fantasy</option>
+      <option value="Self-Help">Self-Help</option>
+      <option value="Business">Business</option>
+      <option value="Technology">Technology</option>
+      <option value="Classics">Classics</option>
+      <option value="Other">Other</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="hasError('category', 'required')">
+      Category is Required
+    </div>
+  </div>
 
-        <!-- Author Field -->
-        <div class="form-group">
-          <ion-label position="floating">Author *</ion-label>
-          <ion-input
-            type="text"
-            formControlName="author"
-            placeholder="Enter author name"
-            clearInput
-          ></ion-input>
-          <div class="error-message" *ngIf="author?.invalid && author?.touched">
-            <ion-text color="danger" *ngIf="author?.errors?.['required']">
-              <small>Author is required</small>
-            </ion-text>
-          </div>
-        </div>
+  <div class="form-group">
+    <label for="publish_date">Publish Date:</label>
+    <input type="date" class="form-control" formControlName="publish_date" id="publish_date">
+    <div class="alert alert-danger" *ngIf="hasError('publish_date', 'required')">
+      Publish Date is Required
+    </div>
+  </div>
 
-        <!-- Publish Date Field -->
-        <div class="form-group">
-          <ion-label position="floating">Publish Date *</ion-label>
-          <ion-input
-            type="date"
-            formControlName="publish_date"
-          ></ion-input>
-          <div class="error-message" *ngIf="publish_date?.invalid && publish_date?.touched">
-            <ion-text color="danger" *ngIf="publish_date?.errors?.['required']">
-              <small>Publish date is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="image">Image URL:</label>
+      <input type="text" class="form-control" placeholder="Enter the Image" formControlName="image" id="image">
+      <div class="alert alert-danger" *ngIf="hasError('image', 'required')">
+        Image is Required
+      </div>
+    </div>
 
-        <!-- Category Field -->
-        <div class="form-group">
-          <ion-label position="floating">Category *</ion-label>
-          <ion-select
-            formControlName="category"
-            placeholder="Select a category"
-          >
-            <ion-select-option value="Fiction">Fiction</ion-select-option>
-            <ion-select-option value="Non-Fiction">Non-Fiction</ion-select-option>
-            <ion-select-option value="Science">Science</ion-select-option>
-            <ion-select-option value="History">History</ion-select-option>
-            <ion-select-option value="Biography">Biography</ion-select-option>
-            <ion-select-option value="Mystery">Mystery</ion-select-option>
-            <ion-select-option value="Romance">Romance</ion-select-option>
-            <ion-select-option value="Fantasy">Fantasy</ion-select-option>
-            <ion-select-option value="Self-Help">Self-Help</ion-select-option>
-            <ion-select-option value="Other">Other</ion-select-option>
-          </ion-select>
-          <div class="error-message" *ngIf="category?.invalid && category?.touched">
-            <ion-text color="danger" *ngIf="category?.errors?.['required']">
-              <small>Category is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="contact">Contact Name:</label>
+      <input type="text" class="form-control" placeholder="Enter the Contact" formControlName="contact" id="contact">
+      <div class="alert alert-danger" *ngIf="hasError('contact', 'required')">
+        Contact is Required
+      </div>
+    </div>
 
-        <!-- Image URL Field -->
-        <div class="form-group">
-          <ion-label position="floating">Image URL *</ion-label>
-          <ion-input
-            type="url"
-            formControlName="image"
-            placeholder="https://example.com/book-image.jpg"
-            clearInput
-          ></ion-input>
-          <div class="error-message" *ngIf="image?.invalid && image?.touched">
-            <ion-text color="danger" *ngIf="image?.errors?.['required']">
-              <small>Image URL is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" class="form-control" placeholder="Enter the Phone" formControlName="phone" id="phone">
+      <div class="alert alert-danger" *ngIf="hasError('phone', 'required')">
+        Phone is Required
+      </div>
+    </div>
 
-        <!-- Abstract/Description Field -->
-        <div class="form-group">
-          <ion-label position="floating">Description *</ion-label>
-          <ion-textarea
-            formControlName="abstract"
-            placeholder="Write a brief description of the book"
-            rows="4"
-          ></ion-textarea>
-          <div class="error-message" *ngIf="abstract?.invalid && abstract?.touched">
-            <ion-text color="danger" *ngIf="abstract?.errors?.['required']">
-              <small>Description is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" placeholder="Enter the Email" formControlName="email" id="email">
+      <div class="alert alert-danger" *ngIf="hasError('email', 'required')">
+        Email is Required
+      </div>
+    </div>
 
-        <!-- Contact Information Section -->
-        <ion-card-header class="contact-header">
-          <ion-card-title>Contact Information</ion-card-title>
-        </ion-card-header>
+    <div class="form-group">
+      <label for="abstract">Abstract / Description:</label>
+      <input type="textbox" class="form-control" placeholder="Enter the Abstract" formControlName="abstract" id="abstract">
+      <div class="alert alert-danger" *ngIf="hasError('abstract', 'required')">
+        Abstract is Required
+      </div>
+    </div>
 
-        <!-- Contact Name Field -->
-        <div class="form-group">
-          <ion-label position="floating">Contact Name *</ion-label>
-          <ion-input
-            type="text"
-            formControlName="contact"
-            placeholder="Your name"
-            clearInput
-          ></ion-input>
-          <div class="error-message" *ngIf="contact?.invalid && contact?.touched">
-            <ion-text color="danger" *ngIf="contact?.errors?.['required']">
-              <small>Contact name is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <div class="alert alert-danger" *ngIf="submitError">
+      {{ submitError }}
+    </div>
 
-        <!-- Email Field -->
-        <div class="form-group">
-          <ion-label position="floating">Email *</ion-label>
-          <ion-input
-            type="email"
-            formControlName="email"
-            placeholder="your.email@example.com"
-            clearInput
-          ></ion-input>
-          <div class="error-message" *ngIf="email?.invalid && email?.touched">
-            <ion-text color="danger" *ngIf="email?.errors?.['required']">
-              <small>Email is required</small>
-            </ion-text>
-          </div>
-        </div>
+    <button type="submit" class="btn btn-submit" [disabled]="form.invalid || isSubmitting">
+      {{ isSubmitting ? 'Submitting...' : 'Submit Book' }}
+    </button>
+  </form>
 
-        <!-- Phone Field -->
-        <div class="form-group">
-          <ion-label position="floating">Phone *</ion-label>
-          <ion-input
-            type="tel"
-            formControlName="phone"
-            placeholder="Your phone number"
-            clearInput
-          ></ion-input>
-          <div class="error-message" *ngIf="phone?.invalid && phone?.touched">
-            <ion-text color="danger" *ngIf="phone?.errors?.['required']">
-              <small>Phone is required</small>
-            </ion-text>
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="button-group">
-          <ion-button
-            type="submit"
-            expand="block"
-            color="primary"
-            [disabled]="form.invalid"
-            class="submit-button"
-          >
-            <ion-icon name="add-circle" slot="start"></ion-icon>
-            Share This Book
-          </ion-button>
-        </div>
-      </form>
-    </ion-card-content>
-  </ion-card>
-</ion-content>
+</div>
+</div>

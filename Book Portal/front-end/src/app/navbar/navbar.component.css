@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfd 100%);
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box; /* Prevents overflow padding issues */
+}
+
+/* New: This aligns the logo and text perfectly side-by-side */
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Adjust this number to change the space between logo and text */
+}
+
+.h1-navbar {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0; /* Keeps any default heading margins from messing up alignment */
+}
+
+.icon {
+  height: 50px; /* Shrunk slightly so it perfectly frames the 24px text */
+  display: block;
+}
+
+/* 2. Group the navigation links together and give them some breathing room */
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px; 
+}
+
+/* 3. Style the links so they look clean */
+ul li a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+  color: #459cf9;
+}

@@ -1,43 +1,58 @@
-.books-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  padding: 16px;
-  
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.book-item {
-  width: 100%;
-}
-
-.empty-state {
+.home-container {
+  padding: 12px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f3 100%);
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  padding: 24px;
+}
+
+.header {
   text-align: center;
+  margin: 40px;
+  animation: slideDown 0.6s ease-out;
+}
 
-  ion-icon {
-    font-size: 64px;
-    color: #ccc;
-    margin-bottom: 16px;
-  }
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  p {
-    font-size: 16px;
-    color: #666;
-    margin: 8px 0;
-    
-    &:first-of-type {
-      font-weight: 600;
-      font-size: 18px;
-      color: #333;
-    }
+.subtitle {
+  font-size: 1.3rem;
+  color: #7f8c8d;
+  font-weight: 300;
+}
+
+.books-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Explicitly 4 columns on desktop */
+  gap: 25px; /* Adds the space between the cards so they don't overlap */
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .books-grid-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns on tablets */
   }
 }
 
+@media (max-width: 600px) {
+  .books-grid-container {
+    grid-template-columns: 1fr; /* 1 stacked column on mobile phones */
+    padding: 15px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -12,9 +12,12 @@ router.post('/addBook', (req, res)=>{
                     author: req.body.author,
                     publish_date: req.body.publish_date,
                     category: req.body.category,
-            }).then((book)=>{    
+        }).then((book)=>{    
                 
-                   return res.status(200).json({msg: `${book.title} has been added successfully`})}).catch((err)=>{ return res.status(500);});
+           return res.status(200).json({msg: `${book.title} has been added successfully`})}).catch((err)=>{
+            console.log(err);
+            return res.status(500).json({ error: 'Failed to add book' });
+           });
     
     
 

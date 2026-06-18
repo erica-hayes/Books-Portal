@@ -1,6 +1,8 @@
-<div class="row">
-<div class="col-sm-3" *ngFor="let book of books">
-  <app-book-item [book]="book" ></app-book-item>
-</div>
-
+<div class="home-container">
+  <header class="header">
+    <h1>Books</h1>
+    <p class="subtitle">Browse our collection of books</p>
+  </header>
+<div class="books-grid-container">
+  <app-book-item *ngFor="let currentBook of books" [book]="currentBook"></app-book-item>
 </div>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-labelledby="title desc">
+  <title id="title">No book cover available</title>
+  <desc id="desc">Fallback image used when a book cover URL cannot be loaded.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#dbe7f3" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="400" fill="url(#bg)" />
+  <rect x="72" y="80" width="156" height="210" rx="10" fill="#ffffff" stroke="#8aa0b6" stroke-width="4" />
+  <line x1="150" y1="80" x2="150" y2="290" stroke="#8aa0b6" stroke-width="2" />
+  <rect x="95" y="120" width="110" height="10" rx="5" fill="#b8c8d8" />
+  <rect x="95" y="142" width="110" height="10" rx="5" fill="#b8c8d8" />
+  <rect x="95" y="164" width="70" height="10" rx="5" fill="#b8c8d8" />
+  <text x="150" y="335" text-anchor="middle" font-family="Verdana, sans-serif" font-size="22" fill="#415466">No Image</text>
+</svg>

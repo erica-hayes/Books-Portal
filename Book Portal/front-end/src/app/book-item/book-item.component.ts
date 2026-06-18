@@ -13,7 +13,7 @@ export class BookItemComponent implements OnInit {
   constructor(private service: BookService) { }
 
   change_book(f, id) {
-    const email = f.value?.trim();
+    const email = f && f.value ? f.value.trim() : '';
     if (!email) {
       console.warn('Please enter a valid email');
       return;

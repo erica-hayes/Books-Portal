@@ -3,5 +3,8 @@
     "@angular/core": "^22.0.1",
     "bootstrap": "^5.3.8",
     "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0"
   }
 }

@@ -1,1 +1,26 @@
+.portal-tab-bar {
+	position: relative;
+	z-index: 10;
+	pointer-events: auto;
+	--background: #ffffff;
+	--border: 1px solid #d9e2ec;
+	border-top: 1px solid #d9e2ec;
+	box-shadow: 0 -8px 18px rgba(35, 52, 71, 0.08);
+	padding-bottom: max(8px, env(safe-area-inset-bottom));
+	height: calc(62px + env(safe-area-inset-bottom));
+
+	ion-tab-button {
+		min-height: 54px;
+		pointer-events: auto;
+		--color: #7f8c9a;
+		--color-selected: #2c3e50;
+		font-weight: 600;
+		letter-spacing: 0.2px;
+
+		ion-icon {
+			font-size: 1.2rem;
+			margin-bottom: 3px;
+		}
+	}
+}
 

@@ -1,6 +1,15 @@
 export interface Book {
-    image: String,  contact: String,  phone: String,
-         email: String,  abstract: String,  author: String,  title: String,  publish_date: String,
-         category: String, status: String, borrowedBy: String
+    ID: string;
+    image: string;
+    contact: string;
+    phone: string;
+    email: string;
+    abstract: string;
+    author: string;
+    title: string;
+    publish_date: string;
+    category: string;
+    status: string;
+    borrowedBy: string | null;
     
 }

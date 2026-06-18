@@ -9,8 +9,18 @@ import { Book } from '../../book';
 })
 export class BookItemComponent implements OnInit {
   @Input() book!: Book;
+  readonly fallbackImagePath = 'assets/images/no-cover.svg';
 
   constructor(private service: BooksService) { }
+
+  onImageError(event: Event): void {
+    const target = event.target as HTMLImageElement;
+    if (!target || target.src.includes(this.fallbackImagePath)) {
+      return;
+    }
+
+    target.src = this.fallbackImagePath;
+  }
   
 
   change_book(f: { value: string }, id: string | number) {

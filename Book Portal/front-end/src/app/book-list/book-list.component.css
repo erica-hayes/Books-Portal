@@ -1,213 +1,58 @@
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: -12px;
-  padding: 24px;
-  gap: 24px;
-}
-
-.col-sm-3 {
-  flex: 0 0 calc(25% - 24px);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: stretch;
-}
-
-@media (max-width: 1200px) {
-  .col-sm-3 {
-    flex: 0 0 calc(33.333% - 24px);
-  }
-}
-
-@media (max-width: 768px) {
-  .col-sm-3 {
-    flex: 0 0 calc(50% - 24px);
-  }
-}
-
-@media (max-width: 576px) {
-  .col-sm-3 {
-    flex: 0 0 calc(100% - 24px);
-  }
-  
-  .row {
-    padding: 12px;
-    gap: 12px;
-  }
-}
-
-/* Book card styling */
-.book-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+.home-container {
+  padding: 12px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f3 100%);
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-.book-card:hover {
-  border-radius: 15px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  align-items: center;
+  justify-content: center;
 }
 
-.book-abstract {
-  font-size: 0.85rem;
-  color: #666;
-  line-height: 1.5;
-  margin: 12px 0;
-  max-height: 90px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  flex: 1;
+.header {
+  text-align: center;
+  margin: 40px;
+  animation: slideDown 0.6s ease-out;
 }
 
-.book-meta {
-  margin: 10px 0;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ecf0f1;
+.header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.contact-info {
-  background-color: #f8f9fa;
-  padding: 12px;
-  border-radius: 8px;
-  margin: 12px 0;
-  font-size: 0.85rem;
+.subtitle {
+  font-size: 1.3rem;
+  color: #7f8c8d;
+  font-weight: 300;
 }
 
-.contact-detail {
-  margin: 6px 0;
-  color: #555;
+.books-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Explicitly 4 columns on desktop */
+  gap: 25px; /* Adds the space between the cards so they don't overlap */
+  padding: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.contact-detail a {
-  color: #3498db;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-detail a:hover {
-  text-decoration: underline;
-  color: #2980b9;
-}
-
-.borrow-section {
-  background-color: #fff3cd;
-  padding: 10px;
-  border-radius: 6px;
-  margin: 10px 0;
-  border-left: 4px solid #ffc107;
-}
-
-.borrowed-by {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #856404;
-  font-weight: 500;
-}
-
-.action-section {
-  display: flex;
-  gap: 8px;
-  margin-top: auto;
-  padding-top: 12px;
-}
-
-.email-input {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #bdc3c7;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  transition: border-color 0.3s ease;
-}
-
-.email-input:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-}
-
-.email-input::placeholder {
-  color: #95a5a6;
-}
-
-.btn {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.btn-action {
-  flex: 1;
-  white-space: nowrap;
-}
-
-.btn-borrow {
-  background-color: #27ae60;
-  color: white;
-}
-
-.btn-borrow:hover {
-  background-color: #229954;
-  box-shadow: 0 3px 10px rgba(39, 174, 96, 0.3);
-}
-
-.btn-return {
-  background-color: #e74c3c;
-  color: white;
-}
-
-.btn-return:hover {
-  background-color: #c0392b;
-  box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
-}
-
-.btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .book-card {
-    max-width: 100%;
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .books-grid-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 columns on tablets */
   }
+}
 
-  .book-image-container {
-    height: 250px;
-  }
-
-  .book-content {
+@media (max-width: 600px) {
+  .books-grid-container {
+    grid-template-columns: 1fr; /* 1 stacked column on mobile phones */
     padding: 15px;
   }
+}
 
-  .book-title {
-    font-size: 1.1rem;
-  }
-
-  .action-section {
-    flex-direction: column;
-  }
-
-  .btn-action {
-    width: 100%;
-  }
-
-  .email-input {
-    width: 100%;
-  }
+html {
+  scroll-behavior: smooth;
 }

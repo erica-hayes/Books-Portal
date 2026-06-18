@@ -1,82 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Books Portal</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="home-container">
+  
+    <div class="image-container">
+    <img class="image-card" src="https://png.pngtree.com/png-clipart/20240817/original/pngtree-animated-cute-line-of-books-with-retro-aesthetic-elements-for-book-png-image_15789456.png" alt="Books Image">
+  </div>
 
-<ion-content [fullscreen]="true">
-  <div class="home-container">
-    <!-- Hero Section -->
-    <div class="hero-section">
-      <h1>Welcome to Books Portal</h1>
-      <p>Share and discover books in your community</p>
+  <header class="header">
+    <h1>Welcome to Books Portal</h1>
+    <p class="subtitle">Share and borrow books with your community</p>
+  </header>
+
+  <div class="features-container">
+    <!-- Browse Books Section -->
+    <div class="feature-card browse-section">
+      <div class="card-icon">📚</div>
+      <h2>Browse Books</h2>
+      <p>Discover a wide collection of books shared by community members. Find your next favorite read.</p>
+      <button class="btn btn-primary action-btn" routerLink="/tabs/tab2">
+        Browse Books
+      </button>
     </div>
 
-    <!-- Features Section -->
-    <div class="features-section">
-      <!-- Browse Books Feature -->
-      <ion-card class="feature-card">
-        <ion-card-header>
-          <ion-card-title>
-            <ion-icon name="library"></ion-icon>
-            Browse Books
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>Explore a wide collection of books available for borrowing. Discover new titles and connect with other book enthusiasts in your community.</p>
-          <ion-button 
-            expand="block" 
-            color="primary"
-            [routerLink]="['/tabs/tab2']"
-          >
-            View All Books
-          </ion-button>
-        </ion-card-content>
-      </ion-card>
-
-      <!-- Share Books Feature -->
-      <ion-card class="feature-card">
-        <ion-card-header>
-          <ion-card-title>
-            <ion-icon name="add-circle"></ion-icon>
-            Share a Book
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <p>Have a book you'd like to share? List it on our platform and let others borrow it. Share the joy of reading with your neighbors.</p>
-          <ion-button 
-            expand="block" 
-            color="secondary"
-            [routerLink]="['/tabs/tab3']"
-          >
-            Add Your Book
-          </ion-button>
-        </ion-card-content>
-      </ion-card>
-    </div>
-
-    <!-- About Section -->
-    <div class="about-section">
-      <h2>About Books Portal</h2>
-      <p>Books Portal is a community-driven platform for sharing and discovering books. Our mission is to foster a love of reading by making books more accessible and by connecting book lovers in your area.</p>
-      <ul class="features-list">
-        <li>
-          <ion-icon name="checkmark-circle" color="success"></ion-icon>
-          <span>Easy book sharing and borrowing</span>
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle" color="success"></ion-icon>
-          <span>Connect with local readers</span>
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle" color="success"></ion-icon>
-          <span>Discover new books and authors</span>
-        </li>
-        <li>
-          <ion-icon name="checkmark-circle" color="success"></ion-icon>
-          <span>Build a community library</span>
-        </li>
-      </ul>
+    <!-- Post Books Section -->
+    <div class="feature-card post-section">
+      <div class="card-icon">✍️</div>
+      <h2>Share a Book</h2>
+      <p>Have a book you'd like to share? Add it to our collection and help others discover great reads.</p>
+      <button class="btn btn-success action-btn" routerLink="/tabs/tab3">
+        Post a Book
+      </button>
     </div>
   </div>
-</ion-content>
+</div>

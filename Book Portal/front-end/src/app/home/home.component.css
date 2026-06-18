@@ -1,6 +1,6 @@
 .home-container {
-  padding: 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 12px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f3 100%);
   min-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -10,8 +10,8 @@
 
 .header {
   text-align: center;
-  margin-bottom: 60px;
   animation: slideDown 0.6s ease-out;
+  margin-bottom: 30px;
 }
 
 .header h1 {
@@ -27,11 +27,20 @@
   color: #7f8c8d;
   font-weight: 300;
 }
+.image-container {
+  margin-top: -20px;
+}
+.image-card {
+  width: 100%;
+  max-width: 250px;
+  overflow: hidden;
+
+}
 
 .features-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 20px;
   max-width: 1000px;
   width: 100%;
   margin-bottom: 40px;
@@ -40,7 +49,7 @@
 .feature-card {
   background: white;
   border-radius: 15px;
-  padding: 40px 30px;
+  padding: 20px 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: all 0.3s ease;
@@ -53,11 +62,11 @@
 }
 
 .browse-section {
-  border-top: 5px solid #3498db;
+  border-top: 5px solid #7ccad0;
 }
 
 .post-section {
-  border-top: 5px solid #27ae60;
+  border-top: 5px solid #7ed09c;
 }
 
 .card-icon {
@@ -92,22 +101,22 @@
 }
 
 .btn-primary {
-  background-color: #3498db;
+  background-color: #7ccad0;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #2980b9;
-  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+  background-color: #4f989f;
+  box-shadow: 0 5px 15px rgba(39, 174, 169, 0.4);
 }
 
 .btn-success {
-  background-color: #27ae60;
+  background-color: #7ed09c;
   color: white;
 }
 
 .btn-success:hover {
-  background-color: #229954;
+  background-color: #629b76;
   box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
 }
 

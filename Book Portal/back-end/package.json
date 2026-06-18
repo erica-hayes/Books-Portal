@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "seed": "node scripts/seed-books.js",
+    "cleanup:books": "node scripts/cleanup-books.js --dry-run",
+    "cleanup:books:apply": "node scripts/cleanup-books.js --apply",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -1,108 +1,163 @@
-.add-book-card {
-  margin: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-
-  ion-card-header {
-    padding: 20px 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-radius: 12px 12px 0 0;
-
-    ion-card-title {
-      color: white;
-      font-size: 20px;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    ion-card-subtitle {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 14px;
-      margin: 8px 0 0 0;
-    }
-  }
-
-  ion-card-content {
-    padding: 24px 16px;
-  }
+/* FIX: Changed from .home-container to :host to target the whole active component viewport */
+:host {
+  display: block;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f3 100%);
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Added bottom margin to prevent content from being cut off on mobile */
 }
 
-form {
+:host-context(ion-content) {
+  --background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f3 100%);
+}
+
+.home-container {
+  min-height: 100vh;
+  width: 100%;
+  background: transparent;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+}
+
+.header {
+  text-align: center;
+  margin: 0; /* Reset margins to remove hidden collapsible top spacing */
+  padding: 40px 20px 10px 20px; /* Padding pushes content down cleanly without breaking backgrounds */
+  animation: slideDown 0.6s ease-out;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #7f8c8d;
+  font-weight: 300;
+}
+
+.page-split-container {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1300px;
+  margin: 0 auto;          
+  padding: 20px 20px 40px 20px; /* Adjusted top padding since .header padding handles spacing */
+  width: 100%;
+  box-sizing: border-box;
 }
 
+.image-container {
+  margin-top: -20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.image-card {
+  width: 100%;
+  max-width: 200px;
+  overflow: hidden;
+
+}
+
+/* Form Container Box */
+.add-book-form {
+  width: 90%;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eeeeee;
+  box-sizing: border-box;
+}
+
+.add-form-container {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+.add-book-form h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* Individual Form Fields */
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-
-  ion-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-  }
-
-  ion-input,
-  ion-select,
-  ion-textarea {
-    --padding-start: 12px;
-    --padding-end: 12px;
-    --padding-top: 12px;
-    --padding-bottom: 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: #fafafa;
-    
-    &:focus {
-      --background: white;
-      border-color: #667eea;
-    }
-  }
-
-  ion-textarea {
-    font-family: inherit;
-  }
+  margin-bottom: 18px;
 }
 
-.error-message {
-  min-height: 20px;
-  padding-top: 4px;
-
-  small {
-    font-size: 12px;
-    font-weight: 500;
-  }
-}
-
-.contact-header {
-  padding: 16px 0 8px 0;
-  border: none;
-  background: transparent;
-
-  ion-card-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #333;
-    padding: 0;
-  }
-}
-
-.button-group {
-  display: flex;
-  gap: 12px;
-  padding-top: 8px;
-  margin-top: 16px;
-}
-
-.submit-button {
-  --border-radius: 8px;
+.form-group label {
   font-weight: 600;
-  height: 48px;
-  
-  &:disabled {
-    opacity: 0.6;
-  }
+  margin-bottom: 8px;
+  color: #34495e;
+  font-size: 0.95rem;
+}
+
+.form-control {
+  padding: 6px 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ffffff; 
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+/* Custom error message boxes */
+.alert-danger {
+  background-color: #fde8e8;
+  color: #e74c3c;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  font-weight: 500;
+  border-left: 4px solid #e74c3c;
+}
+
+/* Primary Action Button */
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #219653;
+}
+
+.btn-submit:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.7;
 }

@@ -24,3 +24,5 @@ coverage/
 # Ignore node_modules in any folder
 node_modules/
 **/node_modules/
+node_modules
+*/node_modules

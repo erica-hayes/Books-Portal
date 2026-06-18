@@ -12,6 +12,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class AddBookComponent implements OnInit {
   constructor(private router: Router, private service: BooksService) { }
+  isSubmitting = false;
+  submitError = '';
+
   form: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
     author: new FormControl('',[Validators.required]),
@@ -53,16 +56,34 @@ export class AddBookComponent implements OnInit {
   get abstract() {
     return this.form.get('abstract');
   }
+
+  hasError(controlName: string, validationName: string): boolean {
+    const control = this.form.get(controlName);
+    return !!control && control.touched && control.hasError(validationName);
+  }
   
-  add_book() {
-    let x = <Book>this.form.value;
-    
-    this.service.addBook(x).subscribe((msg)=>{console.log(msg)}, 
-    (err: HttpErrorResponse)=>{
-      console.log(err);
+  add_book(): void {
+    if (this.form.invalid || this.isSubmitting) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const book = this.form.value as Book;
+    this.isSubmitting = true;
+    this.submitError = '';
+
+    this.service.addBook(book).subscribe({
+      next: () => {
+        this.form.reset();
+        this.router.navigate(['/tabs/tab2']);
+        this.isSubmitting = false;
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+        this.submitError = 'Unable to submit the book right now. Please try again.';
+        this.isSubmitting = false;
+      }
     });
-    this.form.reset();
-    this.router.navigate(['home']);
   }
 
 

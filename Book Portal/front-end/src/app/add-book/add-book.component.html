@@ -1,78 +1,107 @@
-<form [formGroup]="form" (ngSubmit)="add_book()">
-  <div class="form-group">
-    <label for="title">Title:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Title" formControlName="title" id="title">
-  </div>
+
+<div class="home-container">
+
+  <header class="header">
+    <h1>Share a New Book</h1>
+    <p class="subtitle">Fill out the form below to add your book to the portal and share it with the community.</p>
+  </header>
+
+<div class="page-split-container">
   
-  <div class="alert alert-danger" *ngIf="title.invalid && title.touched">
-    <div *ngIf="title.errors.required">Title is Required</div>
+  <div class="form-image-column">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSthhy7pyxlTi9Q609URKyEDFCSts9xIu8k7otELOstPg&s=10" alt="Book Image" class="side-banner-image">
   </div>
 
-  <div class="form-group">
-    <label for="author">Author:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Author" formControlName="author" id="author">
-  </div>
-  <div class="alert alert-danger" *ngIf="author.invalid && author.touched">
-    <div *ngIf="author.errors.required">Author is Required</div>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="add_book()" class="add-book-form">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" placeholder="Enter the Title" formControlName="title" id="title">
+      <div class="alert alert-danger" *ngIf="hasError('title', 'required')">
+        Title is Required
+      </div>
+    </div>
 
-  <div class="form-group">
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input type="text" class="form-control" placeholder="Enter the Author" formControlName="author" id="author">
+      <div class="alert alert-danger" *ngIf="hasError('author', 'required')">
+        Author is Required
+      </div>
+    </div>
+
+    <div class="form-group">
     <label for="category">Category:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Category" formControlName="category" id="category">
-  </div>
-  <div class="alert alert-danger" *ngIf="category.invalid && category.touched">
-    <div *ngIf="category.errors.required">Category is Required</div>
+    <select class="form-control" formControlName="category" id="category">
+      <option value="" disabled selected>Select a Category</option>
+      <option value="Fiction">Fiction</option>
+      <option value="Non-Fiction">Non-Fiction</option>
+      <option value="Science">Science</option>
+      <option value="History">History</option>
+      <option value="Biography">Biography</option>
+      <option value="Mystery">Mystery</option>
+      <option value="Romance">Romance</option>
+      <option value="Sci-Fi / Fantasy">Sci-Fi / Fantasy</option>
+      <option value="Self-Help">Self-Help</option>
+      <option value="Business">Business</option>
+      <option value="Technology">Technology</option>
+      <option value="Classics">Classics</option>
+      <option value="Other">Other</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="hasError('category', 'required')">
+      Category is Required
+    </div>
   </div>
 
   <div class="form-group">
     <label for="publish_date">Publish Date:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Publish Date" formControlName="publish_date" id="publish_date">
-  </div>
-  <div class="alert alert-danger" *ngIf="publish_date.invalid && publish_date.touched">
-    <div *ngIf="publish_date.errors.required">Publish Date is Required</div>
-  </div>
-
-  <div class="form-group">
-    <label for="image">Image:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Image" formControlName="image" id="image">
-  </div>
-  <div class="alert alert-danger" *ngIf="image.invalid && image.touched">
-    <div *ngIf="image.errors.required">Image is Required</div>
+    <input type="date" class="form-control" formControlName="publish_date" id="publish_date">
+    <div class="alert alert-danger" *ngIf="hasError('publish_date', 'required')">
+      Publish Date is Required
+    </div>
   </div>
 
-  <div class="form-group">
-    <label for="contact">Contact:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Contact" formControlName="contact" id="contact">
-  </div>
-  <div class="alert alert-danger" *ngIf="contact.invalid && contact.touched">
-    <div *ngIf="contact.errors.required">Contact is Required</div>
-  </div>
+    <div class="form-group">
+      <label for="image">Image URL:</label>
+      <input type="text" class="form-control" placeholder="Enter the Image" formControlName="image" id="image">
+      <div class="alert alert-danger" *ngIf="hasError('image', 'required')">
+        Image is Required
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="phone">Phone:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Phone" formControlName="phone" id="phone">
-  </div>
-  <div class="alert alert-danger" *ngIf="phone.invalid && phone.touched">
-    <div *ngIf="phone.errors.required">Phone is Required</div>
-  </div>
+    <div class="form-group">
+      <label for="contact">Contact Name:</label>
+      <input type="text" class="form-control" placeholder="Enter the Contact" formControlName="contact" id="contact">
+      <div class="alert alert-danger" *ngIf="hasError('contact', 'required')">
+        Contact is Required
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Email" formControlName="email" id="email">
-  </div>
-  <div class="alert alert-danger" *ngIf="email.invalid && email.touched">
-    <div *ngIf="phone.errors.required">Email is Required</div>
-  </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" class="form-control" placeholder="Enter the Phone" formControlName="phone" id="phone">
+      <div class="alert alert-danger" *ngIf="hasError('phone', 'required')">
+        Phone is Required
+      </div>
+    </div>
 
-  <div class="form-group">
-    <label for="abstract">Abstract:</label>
-    <input type="text" class="form-control"  placeholder="Enter the Abstract" formControlName="abstract" id="abstract">
-  </div>
-  <div class="alert alert-danger" *ngIf="abstract.invalid && abstract.touched">
-    <div *ngIf="abstract.errors.required">Abstract is Required</div>
-  </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" class="form-control" placeholder="Enter the Email" formControlName="email" id="email">
+      <div class="alert alert-danger" *ngIf="hasError('email', 'required')">
+        Email is Required
+      </div>
+    </div>
 
- 
+    <div class="form-group">
+      <label for="abstract">Abstract / Description:</label>
+      <input type="text" class="form-control" placeholder="Enter the Abstract" formControlName="abstract" id="abstract">
+      <div class="alert alert-danger" *ngIf="hasError('abstract', 'required')">
+        Abstract is Required
+      </div>
+    </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
-</form>
+    <button type="submit" class="btn btn-submit" [disabled]="form.invalid">Submit Book</button>
+  </form>
+
+</div>
+</div>

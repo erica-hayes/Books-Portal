@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Book } from 'src/app/book';
 import { BooksService } from 'src/app/books.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
@@ -9,13 +10,27 @@ import { BooksService } from 'src/app/books.service';
 })
 export class BookListComponent implements OnInit {
   books: Book[] = [];
+  private booksSubscription: Subscription | null = null;
 
   constructor(private service: BooksService) {
-    this.service.getBooks().subscribe((x: { books }) => {
-      this.books = x.books || [];
+  }
+
+  ngOnInit() {
+    this.booksSubscription = this.service.getCachedBooks().subscribe((books) => {
+      this.books = books || [];
+    });
+
+    this.service.getBooks().subscribe({
+      error: () => {
+        this.books = this.books || [];
+      }
     });
   }
 
-  ngOnInit() {}
+  ngOnDestroy(): void {
+    if (this.booksSubscription) {
+      this.booksSubscription.unsubscribe();
+    }
+  }
 
 }
